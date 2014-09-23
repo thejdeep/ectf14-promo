@@ -11,7 +11,12 @@
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
-
+    <style type="text/css">
+    .displaymsg{
+      color:green;
+      display: none;
+    }
+    </style>
   </head>
 
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -231,8 +236,9 @@
             <h1>3. Be Informed</h1>
           </div>
    <form class="navbar-form">
-  <input type="text" class="span2" placeholder="Email Id"/>
-  <button type="submit" class="btn">Submit</button>
+  <input type="email" id="emailadd" class="span2" placeholder="Email Id"/>
+  <button type="submit" class="btn" id="senddata">Submit</button>
+  <div class="displaymsg">Success !</div>
   <br/>
   
 </form>
@@ -272,7 +278,23 @@
 
     <script src="assets/js/application.js"></script>
 
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+      $("#senddata").click(function(event){
+        var email = document.getElementById('emailadd').value;
+          $.post( 
+             "submit.php/anything",
+             { emailid: email },
+             function(){
+              $('emailadd').css('display','block');
+              setTimeout(function(){
+                $('emailadd').css('display','none');
+              },2000);
+            };
+          );
+      });
+   });
+    </script>
 
   </body>
 </html>
