@@ -300,9 +300,9 @@ $('#contactform').submit(function(){
              "submit.php/anything",
              { emailid: email },
              function(){
-              $('#emailadd').css('display','block');
+              $('#displaymsg').css('display','block');
               setTimeout(function(){
-                $('#emailadd').css('display','none');
+                $('#displaymsg').css('display','none');
               },2000);
             }
           );
