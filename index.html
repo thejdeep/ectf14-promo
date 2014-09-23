@@ -235,7 +235,7 @@
   <div class="page-header">
             <h1>3. Be Informed</h1>
           </div>
-   <form class="navbar-form">
+   <form class="navbar-form" id="emailform">
   <input type="email" id="emailadd" class="span2" placeholder="Email Id"/>
   <button type="submit" class="btn" id="senddata">Submit</button>
   <div class="displaymsg">Success !</div>
@@ -279,21 +279,36 @@
     <script src="assets/js/application.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function() {
-      $("#senddata").click(function(event){
-        var email = document.getElementById('emailadd').value;
+   //      $(document).ready(function() {
+   //    $("#senddata").click(function(event){
+   //      var email = document.getElementById('emailadd').value;
+   //        $.post( 
+   //           "submit.php/anything",
+   //           { emailid: email },
+   //           function(){
+   //            $('emailadd').css('display','block');
+   //            setTimeout(function(){
+   //              $('emailadd').css('display','none');
+   //            },2000);
+   //          }
+   //        );
+   //    });
+   // });
+$('#contactform').submit(function(){
+       var email = document.getElementById('emailadd').value;
           $.post( 
              "submit.php/anything",
              { emailid: email },
              function(){
-              $('emailadd').css('display','block');
+              $('#emailadd').css('display','block');
               setTimeout(function(){
-                $('emailadd').css('display','none');
+                $('#emailadd').css('display','none');
               },2000);
             }
           );
-      });
-   });
+
+  return false;
+});
     </script>
 
   </body>
